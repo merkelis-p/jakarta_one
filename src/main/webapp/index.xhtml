@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+<h:head/>
+<h:body>
+    <h2>Teams:</h2>
+    <h:form>
+        <h:inputText value="#{teams.searchTerm}" />
+        <h:commandButton value="Search" action="#{teams.searchTeams}" />
+    </h:form>
+
+    <ol>
+        <ui:repeat value="#{teams.allTeams}" var="team">
+            <li><h:link value="#{team.name}" outcome="players?teamId=#{team.id}" /></li>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <h:inputText value="#{teams.teamToCreate.name}" required="true" />
+        <h:commandButton value="Add new team" actionListener="#{teams.createTeam}" action="index?faces-redirect=true"/>
+
+    </h:form>
+    <h:link outcome="myBatis/teams" value="MyBatis implementation"/>
+
+<!--    <h:outputText value="#{pirmasKomponentas.sakykLabas()}"/>-->
+<!--    <h:outputText value="#{pirmasKomponentas.getClass().name}"/>-->
+<!--    <h:outputText value="#{antrasKomponentas.sakykLabas()}"/>-->
+<!--    <h:outputText value="#{antrasKomponentas.getClass().name}"/>-->
+
+    <h:form>
+        <h:commandButton value="Vykdyti Transakcija" action="#{tPirmasisKomponentas.vykdytiTransakcija}"></h:commandButton>
+    </h:form>
+
+</h:body>
+</html>
